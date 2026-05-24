@@ -1,9 +1,11 @@
 import { TriageRequest, TriageResponse, TriageLevel } from "@/types";
 
 function scoreVitals(request: TriageRequest): { score: number; reasons: string[] } {
-  const { vitals, nutritionLevel } = request.patient;
+  
   let score = 0;
   const reasons: string[] = [];
+  const { vitals } = request.patient;
+const nutritionLevel = request.nutritionLevel;
 
   // Heart rate scoring
   if (vitals.heartRate > 120 || vitals.heartRate < 50) {
